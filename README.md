@@ -1,5 +1,6 @@
 # City Explorer
 
+**Site URL**: https://city-explorer-module2.netlify.app
 **Author**: Vivian
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 

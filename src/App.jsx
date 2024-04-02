@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Type a City Name" onChange={handleNewCity} />
+        <input placeholder="Explore!" onChange={handleNewCity} />
       </form>
     </>
   )

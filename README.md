@@ -1,5 +1,6 @@
 # City Explorer
 
+**Site URL**: https://city-explorer-module2.netlify.app
 **Author**: Vivian
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
@@ -32,6 +33,10 @@ To build and run the city-explorer application on your local machine, follow the
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
+## LHR Monday
+![LHR1](./src/assets/LHR%201.png)
+
+
 ## Lab 1 - Mon
 Format Estimate of time needed to complete: _____ 
 Start time: _____ 
@@ -41,8 +46,8 @@ Actual time needed to complete: _____
 Feature #1:
 Estimate of time needed to complete: 2 hours 
 Start time: 10:30 
-Finish time: 
-Actual time needed to complete: 
+Finish time: 1:30
+Actual time needed to complete: 3 hours
 
 # React + Vite
 

@@ -9,6 +9,8 @@ function App() {
   // Initialize state variables
   const [city, setCity] = useState('');
   const [location, setLocation] = useState({});
+  const [error, setError] = useState(null); // State to manage API call errors
+
 
   // Handle input change
   function handleNewCity(e) {
@@ -28,12 +30,17 @@ function App() {
     try {
       // Fetch data from API
       let response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch location data: ${response.status} - ${response.statusText}`);
+      }
       let jsonData = await response.json();
       let locationData = jsonData[0];
       // Update location state
       setLocation(locationData);
+      setError(null); // Clear any previous errors
     } catch (error) {
       console.error("Error getting location information", error);
+      setError(error.message); // Set error message in state
     }
 
     // Log information
@@ -44,9 +51,21 @@ function App() {
   // form/search component, title component/ lat lon comp, map component
   // TODO: make separate pages for components
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Explore!" onChange={handleNewCity} />
+
+    <div className="container mt-5">
+
+      {/* Bootstrap Alert component to display error message */}
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="mb-3">
+        <div className="input-group">
+          <input type="text" className="form-control" placeholder="Enter a city" onChange={handleNewCity} />
+          <button type="submit" className="btn btn-primary">Explore</button>
+        </div>
       </form>
 
       {location.display_name && (
@@ -61,11 +80,11 @@ function App() {
       )}
 
       <When condition={location.lat && location.lon}>
-        <section>
-          <img src={`https://maps.locationiq.com/v3/staticmap?key=${accessToken}&center=${location.lat},${location.lon}&size=500x440`} />
-        </section>
+        <div className="mb-3">
+          <img src={`https://maps.locationiq.com/v3/staticmap?key=${accessToken}&center=${location.lat},${location.lon}&size=500x440`} className="img-fluid" alt="Map" />
+        </div>
       </When>
-    </>
+    </div>
   );
 }
 
